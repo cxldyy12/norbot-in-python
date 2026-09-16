@@ -5,7 +5,6 @@ from comandos import *
 from datetime import datetime
 
 bot = commands.Bot(command_prefix=PREFIX, intents=discord.Intents.all())
-
 bot.inicio = datetime.now()
 
 @bot.event

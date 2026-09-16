@@ -1,7 +1,7 @@
 from discord.ext import commands
 import discord
 from config import PREFIX
-from datetime import datetime
+from utils import get_uptime
 
 class botinfo(commands.Cog):
     def __init__(self, bot):
@@ -22,7 +22,6 @@ class botinfo(commands.Cog):
         servidores = len(self.bot.guilds)
         ping = round(self.bot.latency * 1000)
         name = self.bot.user.name
-        uptime = datetime.now() - self.bot.inicio
 
         embed1.add_field(
             name = "Meu nome é ",
@@ -36,23 +35,23 @@ class botinfo(commands.Cog):
         
         embed1.add_field(
             name = "Meu ping atual:",
-            value= f'{ping}', 
-            inline=True)
+            value= f'{ping}')
         
+        uptime = get_uptime(self.bot)
+
         embed1.add_field(
-            name = "Online há ",
-            value= f"{uptime}", 
+            name="Online há",
+            value=uptime,
             inline=False)
 
         embed1.add_field(
             name = "Biblioteca:",
             value= f"Discord.py v2.7.1", 
-            inline=True)
+            inline=False)
         
         embed1.add_field(
             name = "Linguagem",
-            value= f"Python", 
-            inline=False)
+            value= f"Python")
 
         embed1.add_field(
             name = "Lista de Comandos:",
