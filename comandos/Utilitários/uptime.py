@@ -12,7 +12,7 @@ class uptime (commands.Cog):
         help="Responde com o tempo da atividade",
         extras={'categoria': 'Utilitários'}
     )
-    async def uptime(self, ctx):
+    async def uptime(self, message):
 
         uptim = datetime.now() - self.bot.inicio
         totalSeconds = math.floor(uptim / 1000)
@@ -28,7 +28,7 @@ class uptime (commands.Cog):
             color=discord.Color.green()
         )
 
-        await ctx.channel.send(embed = embed1)
+        await message.channel.send(embed = embed1)
 
 async def setup(bot):
     await bot.add_cog(uptime(bot))
